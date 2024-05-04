@@ -1,0 +1,17 @@
+services:
+  php:
+    build: .
+    image: php:7.2-apache
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+      - ./php.ini:/usr/local/etc/php/php.ini
+    extra_hosts:
+      - "vexecucre.local:127.0.0.1"
+    hostname: vexecucre.local
+    domainname: local
+    ports:
+      - 80:80
+    environment:
+      - "DB_PORT=3307"
+      - "DB_HOST=database"
